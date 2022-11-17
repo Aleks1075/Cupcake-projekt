@@ -1,0 +1,26 @@
+@startuml
+
+!pragma layout smetana
+
+object Order
+object Orderlines
+object Cupcakes
+object Top
+object Bottom
+object User
+object Customer
+object Admin
+object ShoppingCart
+
+
+User <|-- Customer
+User <|-- Admin
+
+Order *-- Orderlines
+Orderlines *-- ShoppingCart
+ShoppingCart *-- Cupcakes
+Cupcakes *-- Top
+Cupcakes *-- Bottom
+Order *-- User
+
+@enduml

@@ -1,0 +1,148 @@
+@startuml
+
+!pragma layout smetana
+
+class Order
+class OrderLines
+class ShoppingCart
+class Cupcake
+class Top
+class Bottom
+class User
+class Admin
+
+Order *-- OrderLines
+OrderLines *-- ShoppingCart
+ShoppingCart *-- Cupcake
+Cupcake *-- Top
+Cupcake *-- Bottom
+Order *-- User
+User o-- Admin
+
+Order : --
+
+OrderLines :  -String username
+OrderLines :  -String email
+OrderLines :  -String password
+OrderLines :  -Timestamp order_date
+OrderLines :  -int order_line_id
+OrderLines :  -String top_name
+OrderLines :  -String bottom_name
+OrderLines :  -int orderId
+OrderLines :  -int top_id
+OrderLines :  -int bottom_id
+OrderLines :  -double top_price
+OrderLines :  -double bottom_price
+OrderLines :  -int amount
+OrderLines :  -List<OrderLines> orderLinesList = new ArrayList<>()
+
+OrderLines : +OrderLines(int orderId, int top_id, int bottom_id, double top_price, double bottom_price, int amount)
+OrderLines : +OrderLines(String username, String email, String password, int order_id, Timestamp order_date, int order_line_id, int amount, int top_id, String top_name, double top_price, int bottom_id, String bottom_name, double bottom_price)
+OrderLines : +String getUsername()
+OrderLines : +void setUsername(String username)
+OrderLines : +String getEmail()
+OrderLines : +void setEmail(String email)
+OrderLines : +String getPassword()
+OrderLines : +void setPassword(String password)
+OrderLines : +Timestamp getOrder_date()
+OrderLines : +int getOrder_line_id()
+OrderLines : +String getTop_name()
+OrderLines : +String getBottom_name()
+OrderLines : +void add(OrderLines orderLines)
+OrderLines : +int getOrderId()
+OrderLines : +int getTop_id()
+OrderLines : +void setTop_id(int top_id)
+OrderLines : +int getBottom_id()
+OrderLines : +double getTop_price()
+OrderLines : +double getBottom_price()
+OrderLines : +int getAmount()
+OrderLines : +String toString()
+
+ShoppingCart : -Cupcake room
+ShoppingCart : -Top guest
+ShoppingCart : -Bottom food
+ShoppingCart : -int days
+ShoppingCart : -String startDate
+ShoppingCart : -String endDate
+
+ShoppingCart : +List<Cupcake> cupcakeList = new ArrayList<>();
+
+ShoppingCart : +ShoppingCart()
+ShoppingCart : +void add(Cupcake cupcake)
+ShoppingCart : +int getNumberOfCupcakes()
+ShoppingCart : +List<Cupcake> getCupcakeList()
+ShoppingCart : +void resetCart()
+ShoppingCart : +double getTotalPrice()
+ShoppingCart : +void deleteItem(int item_id)
+ShoppingCart : +void addItem(int item_id)
+ShoppingCart : +void removeItem(int item_id)
+
+Top : -int id
+Top : -String name
+Top : -double price
+
+Bottom : -int id
+Bottom : -dString name
+Bottom : -double price
+
+User : -String username
+User : -String email
+User : -String password
+User : -double balance
+User : -String role
+
+User : +User(String username, String email, String password, String role, double balance)
+User : +String getUsername()
+User : +void setUsername(String username)
+User : +String getPassword()
+User : +void setPassword(String password)
+User : +String getRole()
+User : +void setRole(String role)
+User : +String getEmail()
+User : +void setEmail(String email)
+User : +double getBalance()
+User : +boolean equals(Object o)
+User : +int hashCode()
+User : +String toString()
+
+Bottom : +Bottom(int id, String name, double price)
+Bottom : +int getId()
+Bottom : +String getName()
+Bottom : +double getPrice()
+
+Top : +Top(int id, String name, double price)
+Top : +int getId()
+Top : +String getName()
+Top : +double getPrice()
+
+Cupcake : -Top top
+Cupcake : -Bottom bottom
+Cupcake : -int quantity
+
+Cupcake : +Cupcake(Top top, Bottom bottom, int quantity)
+Cupcake : +Top getTop()
+Cupcake : +Bottom getBottom()
+Cupcake : +int getQuantity()
+Cupcake : +double getPrice()
+Cupcake : +void setQuantity(int i)
+
+Admin : -String username
+Admin : -String email
+Admin : -String password
+Admin : -double balance
+Admin : -String role
+
+Admin : +Admin(String username, String email, String password, String role, double balance)
+Admin : +String getUsername()
+Admin : +void setUsername(String username)
+Admin : +String getPassword()
+Admin : +void setPassword(String password)
+Admin : +String getRole()
+Admin : +void setRole(String role)
+Admin : +String getEmail()
+Admin : +void setEmail(String email)
+Admin : +boolean equals(Object o)
+Admin : +int hashCode()
+Admin : +String toString()
+
+@enduml
