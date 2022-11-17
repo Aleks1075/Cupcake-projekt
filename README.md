@@ -4,9 +4,13 @@
 
 Funktionelt kan hjemmesiden:
 
+
 Vise hhv. sider for bruger og admin.
+
 Du kan logge på følgende brugere.
+
 Username: Aleks med password: 1234 (rolle: customer)
+
 Username: Louise med password: 1234 (rolle: admin)
 
 
